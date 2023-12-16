@@ -1,0 +1,12 @@
+.title {
+    text-align: left;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    font-size: 18px;
+}
+
+.th-custom {
+    font-weight: 700;
+    color: gray !important;
+}
