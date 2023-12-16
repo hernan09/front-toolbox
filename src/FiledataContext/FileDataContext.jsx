@@ -4,7 +4,7 @@ const FileDataContext = createContext();
 
 export const FileDataProvider = ({ children }) => {
   const [fileData, setFileData] = useState([]);
-  const [allFileData, setallFileData] = useState([])
+  const [allFileData, setallFileData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +28,7 @@ export const FileDataProvider = ({ children }) => {
   }, []);
 
   return (
-    <FileDataContext.Provider value={fileData}>
+    <FileDataContext.Provider value={{ fileData, allFileData }}>
       {children}
     </FileDataContext.Provider>
   );

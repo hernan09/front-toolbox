@@ -1,26 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFileDataContext } from '../../FiledataContext/FileDataContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container, Table } from 'react-bootstrap';
+import {Container, Table, Dropdown, FormControl  } from 'react-bootstrap';
 import './table.css';
 
 const MainComponent = () => {
-  const fileData = useFileDataContext();
+  const {fileData, allFileData} = useFileDataContext();
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredFileData = fileData?.filter((item) => {
+    return item?.file?.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
   return (
     <Container>
+       <FormControl
+        type="text"
+        placeholder="Search by file name"
+        className="mb-3 mt-5"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        style={{ border: '2px solid #808080', outline:'none' }}
+      />
       <h1 className='title font-weight-bold'>React Text App</h1>
+      <Dropdown className='mt-2 mb-2'>
+        <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+        See available Files
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+        {allFileData.map((item, index) => (
+          <Dropdown.Item key={index} href={`#`}>
+            {item}
+          </Dropdown.Item>
+        ))}
+        </Dropdown.Menu>
+     </Dropdown>
       <Table className="table table-bordered table-striped">
         <thead>
-          <tr>
-            <th className='th-custom'>File</th>
-            <th className='th-custom'>Text</th>
-            <th className='th-custom'>Number</th>
-            <th className='th-custom'>Hex</th>
+          <tr style={{ borderBottom: '2px solid black' }}>
+            <th className='th-custom-title'>File</th>
+            <th className='th-custom-title'>Text</th>
+            <th className='th-custom-title'>Number</th>
+            <th className='th-custom-title'>Hex</th>
           </tr>
         </thead>
         <tbody>
-          {fileData.map((item, index) => (
+          {filteredFileData.map((item, index) => (
             item.lines?.map((line, lineIndex) => (
               <tr className="tr-custom" key={`${index}-${lineIndex}`}>
                 <td className="th-custom">{item.file}</td>

@@ -3,19 +3,19 @@
 
 # Explicacion de la Api
 
-   APP desarrollada con react ECMA 6 y bootstrap que consume una api y despliega la informacion en una tabla , posee un buscador de archivos
+   APP desarrollada con react ECMA 6 y bootstrap que consume una api y despliega la informacion en una tabla , posee un filtro por query params
 
 # Estructura de Carpetas
  ```bash
    project-root/
     |-- src/
-    | |-- components/ # Archivos de rutas de Express
-    | |-- FiledataContext/ # metodos de parseo a json
-    | |-- App.js # Archivo principal de la aplicación Express
+    | |-- components/ #componentes de la app
+    | |-- FiledataContext/ # provider del componente de context api React
+    | |-- App.js # Archivo principal de la aplicación 
     |-- test/
-    | |-- api.test.js # Pruebas utilizando Mocha y Chai
-    |-- node_modules/ # Dependencias de Node.js (ignorar en repositorio)
-    |-- package.json # Archivo de configuración de Node.js
+    | |-- api.test.js # Pruebas utilizando jest
+    |-- node_modules/ # Dependencias 
+    |-- package.json # Archivo de configuración
     |-- .gitignore # Especifica archivos/directorios a ignorar por Git
     |-- README.md # Documentación del proyecto
 ```
