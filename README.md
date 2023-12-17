@@ -12,8 +12,6 @@
     | |-- components/ #componentes de la app
     | |-- FiledataContext/ # provider del componente de context api React
     | |-- App.js # Archivo principal de la aplicación 
-    |-- test/
-    | |-- api.test.js # Pruebas utilizando jest
     |-- node_modules/ # Dependencias 
     |-- package.json # Archivo de configuración
     |-- .gitignore # Especifica archivos/directorios a ignorar por Git
@@ -37,3 +35,7 @@
    
    ```bash
    npm run test
+
+4. **A tener en cuenta:**
+
+   Se debera correr el proyecto del back desde local en el puerto 4000
