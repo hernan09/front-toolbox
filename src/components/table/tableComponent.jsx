@@ -5,9 +5,11 @@ import {Container, Table, Dropdown, FormControl  } from 'react-bootstrap';
 import './table.css';
 
 const MainComponent = () => {
+  /// Estado local para almacenar los datos 
   const {fileData, allFileData} = useFileDataContext();
   const [searchTerm, setSearchTerm] = useState('');
 
+  // metodo para filtrar la data de la tabla desde el buscador
   const filteredFileData = fileData?.filter((item) => {
     return item?.file?.toLowerCase().includes(searchTerm.toLowerCase());
   });
