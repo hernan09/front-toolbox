@@ -1,7 +1,7 @@
 # Nombre del Proyecto
     API 1 TOOLBOX-FRONT
 
-# Explicacion de la Api
+# Explicación de la Api
 
    APP desarrollada con react ECMA 6 y bootstrap que consume una api y despliega la informacion en una tabla , posee un filtro por query params
 
