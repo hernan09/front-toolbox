@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
-import { useFileDataContext } from '../../FiledataContext/FileDataContext';
+import React, { useState,useEffect,useCallback } from 'react';
+//import { useFileDataContext } from '../../FiledataContext/FileDataContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchData } from '../../store';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container, Table, Dropdown, FormControl  } from 'react-bootstrap';
 import './table.css';
 
 const MainComponent = () => {
   /// Estado local para almacenar los datos 
-  const {fileData, allFileData} = useFileDataContext();
+  const dispatch = useDispatch();
+  //const state = useSelector((state) => state);
+  const { fileData, allFileData } = useSelector((state) => state);
   const [searchTerm, setSearchTerm] = useState('');
+
+  const memoizedFetchData = useCallback(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
+
+  useEffect(() => {
+    memoizedFetchData();
+  }, [memoizedFetchData]);
 
   // metodo para filtrar la data de la tabla desde el buscador
   const filteredFileData = fileData?.filter((item) => {
